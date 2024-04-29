@@ -23,6 +23,16 @@ public class Student {
     public String getStudentAddress(){
         return studentAddress;}
 
+    public static void sort(Student[] studentList, Comparator<Student> comparator){
+        int n = studentList.length;
+        for(int i = 0; i < n-1; i++){
+            for(int j = 0; j < n - i - 1; j++){
+                if(comparator.compare(studentList[j], studentList[j + 1]) > 0) {
+                    Student temp = studentList[j];
+                    studentList[j] = studentList[j + 1];
+                    studentList[j + 1] = temp;
+                }}}}
+
     public String toString() {
         return "\n\nStudent Roll Number: " + rollno +
         "\nStudent Name: " + studentName +
@@ -35,7 +45,7 @@ public class Student {
     public static void main(String[] args) {
         Scanner scnr = new Scanner(System.in);
         Student[] studentList = new Student[10];
-        for(int i=0;i<10;i++){
+        for(int i=0;i<studentList.length;i++){
             System.out.println("Enter student Name: ");
             String sName = scnr.nextLine();
             System.out.println("Enter student address: ");
@@ -53,11 +63,11 @@ public class Student {
             if ((userChoice < 1) || (userChoice > 4)){
                 System.out.println("Please enter integer between 1 and 4");}
             else if (userChoice == 1){
-                Arrays.sort(studentList, new StudentComparatorRollno());
-                System.out.println("*****List has been sorted by Roll Number.*****");}
+                Student.sort(studentList, new StudentComparatorRollno());
+                System.out.println("\n\nList has been sorted by Roll Number.\n\n");}
             else if (userChoice == 2){
-                Arrays.sort(studentList, new StudentComparatorName());
-                System.out.println("*****List has been sorted by name.*****");}
+                Student.sort(studentList, new StudentComparatorName());
+                System.out.println("\n\nList has been sorted by name.\n\n");}
             else if (userChoice == 3){
                 String studentsString = Arrays.toString(studentList);
                 System.out.println(studentsString);}
