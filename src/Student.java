@@ -24,10 +24,10 @@ public class Student {
         return studentAddress;}
 
     public String toString() {
-        return "\nStudent Roll Number: " + rollno +
-    "\nStudent Name: " + studentName +
-    "\nStudent Address: " + studentAddress +
-    "\n\n";
+        return "\n\nStudent Roll Number: " + rollno +
+        "\nStudent Name: " + studentName +
+        "\nStudent Address: " + studentAddress +
+        "\n";
     }
 
 
@@ -54,10 +54,10 @@ public class Student {
                 System.out.println("Please enter integer between 1 and 4");}
             else if (userChoice == 1){
                 Arrays.sort(studentList, new StudentComparatorRollno());
-                System.out.println("List has been sorted by Roll Number.");}
+                System.out.println("*****List has been sorted by Roll Number.*****");}
             else if (userChoice == 2){
                 Arrays.sort(studentList, new StudentComparatorName());
-                System.out.println("List has been sorted by name.");}
+                System.out.println("*****List has been sorted by name.*****");}
             else if (userChoice == 3){
                 String studentsString = Arrays.toString(studentList);
                 System.out.println(studentsString);}
