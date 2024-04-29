@@ -1,22 +1,36 @@
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class Student {
-    String studentName;
-    String studentAddress;
-    int rollno = 0;
+    private static int nextRollNo = 1;
+    private int rollno;
+    private String studentName;
+    private String studentAddress;
+
     public Student (String studentName, String studentAddress){
-        this.rollno = rollno + 1;
-        rollno++;
+        this.rollno = nextRollNo;
+        nextRollNo++;
         this.studentName = studentName;
         this.studentAddress = studentAddress;}
 
     public int getRollno() {
         return rollno;
     }
-    public static void printAll(Student[] list){
-        for (int i = 0; i < 10; i++) {
-            System.out.println(list[i]);}
+    public String getStudentName(){
+        return studentName;
     }
+    public String getStudentAddress(){
+        return studentAddress;}
+
+    public String toString() {
+        return "\nStudent Roll Number: " + rollno +
+    "\nStudent Name: " + studentName +
+    "\nStudent Address: " + studentAddress +
+    "\n\n";
+    }
+
+
 
     public static void main(String[] args) {
         Scanner scnr = new Scanner(System.in);
@@ -39,13 +53,14 @@ public class Student {
             if ((userChoice < 1) || (userChoice > 4)){
                 System.out.println("Please enter integer between 1 and 4");}
             else if (userChoice == 1){
-                Sortation.sortByRollno(studentList);
+                Arrays.sort(studentList, new StudentComparatorRollno());
                 System.out.println("List has been sorted by Roll Number.");}
             else if (userChoice == 2){
-                Sortation.sortByName(studentList);
+                Arrays.sort(studentList, new StudentComparatorName());
                 System.out.println("List has been sorted by name.");}
             else if (userChoice == 3){
-                printAll(studentList);}
+                String studentsString = Arrays.toString(studentList);
+                System.out.println(studentsString);}
             else {
                 continueLoop = false;
                 System.out.println("Goodbye.");}}}}
